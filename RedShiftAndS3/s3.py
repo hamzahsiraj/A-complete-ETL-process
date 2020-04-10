@@ -18,12 +18,12 @@ standardization_result = os.system("python Standardization/Skyline_Capstone.py")
 cur.execute("begin;")
 
 def saveThepickDataAndSendToS3():
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVDBYH4FITVFMOGIY', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='ACCESS_KEY', aws_secret_access_key='SECRET_ACCESS_KEY')
     path = list(pathlib.Path('C:/Users/Hamzah.Quaraish/Desktop/capstone/Standardization/Skyline_Final.csv').glob('*.csv'))[0].name
     path = 'C:/Users/Hamzah.Quaraish/Desktop/capstone/Standardization/Skyline_Final.csv/'+path
     s3.upload_file(path, 's3lab-hamzah', 'pickup_data.csv')
     copy_command = ("""copy capstone_hamzah.pickup_data from 's3://s3lab-hamzah/pickup_data.csv' 
-credentials 'aws_access_key_id=AKIAVDBYH4FIQHAAXYO6;aws_secret_access_key=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'
+credentials 'aws_access_key_id="ACCESS_KEY";aws_secret_access_key="ACCESS__secret_KEY"'
 ignoreheader 1
 region 'us-east-2'
 delimiter ','
@@ -45,13 +45,13 @@ tweetStartTime = datetime.now()
 tweet_result = os.system("python Tweet/TweetStreaming.py")
 # os.system("python Tweet/TweetStreaming.py")
 def sendTheTweets():
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVDBYH4FITVFMOGIY', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='ACCESS_KEY', aws_secret_access_key='SECRET_ACCESS_KEY')
     # df.coalesce(1).write.csv('prod_update', header=True)
     path = list(pathlib.Path('C:/Users/Hamzah.Quaraish/Desktop/capstone/Tweet').glob('*.csv'))[0].name
     path = 'C:/Users/Hamzah.Quaraish/Desktop/capstone/Tweet/'+path
     s3.upload_file(path, 's3lab-hamzah', 'tweet_analysis.csv')
     copy_command = ("""copy capstone_hamzah.Tweet_Analysis from 's3://s3lab-hamzah/tweet_analysis.csv' 
-credentials 'aws_access_key_id=AKIAVDBYH4FIQHAAXYO6;aws_secret_access_key=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'
+credentials 'aws_access_key_id="ACCESS_KEY";aws_secret_access_key="ACCESS__secret_KEY"'
 ignoreheader 1
 region 'us-east-2'
 delimiter ',';""")
@@ -76,13 +76,13 @@ scd_result = os.system("python SCD/scd.py")
 # os.system("python SCD/scd.py")
 print("here lol")
 def sendPickupFactWithKeys():
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVDBYH4FITVFMOGIY', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='ACCESS_KEY', aws_secret_access_key='SECRET_ACCESS_KEY')
     # df.coalesce(1).write.csv('prod_update', header=True)
     path = list(pathlib.Path('C:/Users/Hamzah.Quaraish/Desktop/capstone/FctType2_withKeys_hamzah.csv').glob('*.csv'))[0].name
     path = 'C:/Users/Hamzah.Quaraish/Desktop/capstone/FctType2_withKeys_hamzah.csv/'+path
     s3.upload_file(path, 's3lab-hamzah', 'pickup_data_withKeys.csv')
     copy_command = ("""copy capstone_hamzah.pickup_data_withkeys from 's3://s3lab-hamzah/pickup_data_withKeys.csv' 
-credentials 'aws_access_key_id=AKIAVDBYH4FIQHAAXYO6;aws_secret_access_key=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'
+credentials 'aws_access_key_id="ACCESS_KEY";aws_secret_access_key="ACCESS__secret_KEY"'
 ignoreheader 1
 region 'us-east-2'
 delimiter ',';""")
@@ -90,13 +90,13 @@ delimiter ',';""")
     cur.execute(copy_command)
 
 def sendUpdated():
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVDBYH4FITVFMOGIY', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='ACCESS_KEY', aws_secret_access_key='SECRET_ACCESS_KEY')
     # df.coalesce(1).write.csv('prod_update', header=True)
     path = list(pathlib.Path('C:/Users/Hamzah.Quaraish/Desktop/capstone/driverFinal_dim_Type2.csv').glob('*.csv'))[0].name
     path = 'C:/Users/Hamzah.Quaraish/Desktop/capstone/driverFinal_dim_Type2.csv/'+path
     s3.upload_file(path, 's3lab-hamzah', 'driver_dim_updated.csv')
     copy_command = ("""copy capstone_hamzah.driver_dim_updated from 's3://s3lab-hamzah/driver_dim_updated.csv' 
-credentials 'aws_access_key_id=AKIAVDBYH4FIQHAAXYO6;aws_secret_access_key=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'
+credentials 'aws_access_key_id="ACCESS_KEY";aws_secret_access_key="ACCESS__secret_KEY"'
 ignoreheader 1
 region 'us-east-2'
 delimiter ',';""")
@@ -121,13 +121,13 @@ AnotherStartTime = datetime.now()
 # os.system("python Standardization/Skyline_Capstone.py")
 # subprocess.call("[ACTIVEDASH/*]")
 def sendAnotherSourceAndJoin():
-    s3 = boto3.client('s3', aws_access_key_id='AKIAVDBYH4FITVFMOGIY', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='ACCESS_KEY', aws_secret_access_key='SECRET_ACCESS_KEY')
     # df.coalesce(1).write.csv('prod_update', header=True)
     # path = list(pathlib.Path('C:/Users/Hamzah.Quaraish/Desktop/capstone.csv').glob('*.csv'))[0].name
     path = 'C:/Users/Hamzah.Quaraish/Desktop/capstone/uber.csv'
     s3.upload_file(path, 's3lab-hamzah', 'another_source.csv')
     copy_command = ("""copy capstone_hamzah.pickupData_with_anotherSource from 's3://s3lab-hamzah/another_source.csv' 
-credentials 'aws_access_key_id=AKIAVDBYH4FIQHAAXYO6;aws_secret_access_key=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'
+credentials 'aws_access_key_id="ACCESS_KEY";aws_secret_access_key="ACCESS__secret_KEY"'
 ignoreheader 1
 region 'us-east-2'
 delimiter ',';""")
